@@ -15,3 +15,17 @@ function displayData(data) {
     content.innerHTML += `<p class="term"></p>`;
   }
 }
+
+// ------ OVERLAY ------ //
+function overlayOn() {
+  document.getElementById('overlay').style.display = 'block';
+}
+
+function overlayOff() {
+  document.getElementById('overlay').style.display = 'none';
+}
+
+function close(event) {
+  event.stopPropagation();
+}
+// ------ OVERLAY ------ //

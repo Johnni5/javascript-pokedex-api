@@ -1,4 +1,13 @@
+/* GENERAL */
+@font-face {
+  font-family: 'Raleway', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  src: local(''), url('../fonts/Raleway/Raleway-VariableFont_wght.ttf');
+}
+
 body {
+  font-family: 'Raleway', sans-serif;
   margin: 0;
   font-size: 16px;
   background-color: aqua;
@@ -14,30 +23,187 @@ h1 {
   color: rgb(53, 50, 50);
 }
 
+p {
+  padding: 0;
+  margin: 0;
+}
+
+.d-none {
+  display: none;
+}
+
+.txt-black {
+  color: black;
+}
+
+.active {
+  text-decoration: underline solid green 4px;
+  text-underline-offset: 8px;
+}
+
+#overlay-stats {
+  color: black;
+  padding-left: 25px;
+  padding-top: 16px;
+}
+
+.overlay-stats-bar {
+  height: 16px;
+  border-radius: 10px;
+  background: rgba(154, 205, 50, 0.3);
+}
+
 /* HEADER */
 
 header {
   border: yellowgreen 2px solid;
 }
 
-/* MAIN */
-
-main {
-  border: rgb(231, 194, 29) 2px solid;
-}
+/* CARD */
 
 #content {
+  height: 100vh;
+}
+
+.title {
+  padding: 4px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-around;
+  color: white;
+  font-weight: bold;
+  background-color: rgba(63, 61, 61, 0.24);
+}
+
+.title-overlay {
+  font-size: x-large;
+}
+
+#card {
   background-color: rgb(211, 144, 97);
   margin-left: auto;
   margin-right: auto;
-  width: 600px;
-  height: 530px;
+  width: 200px;
+  height: 250px;
   border: black 1px solid;
   border-radius: 10px;
   box-shadow: blueviolet 0 0 6px;
   margin-top: 75px;
   overflow-y: auto;
   margin-bottom: 75px;
+  cursor: pointer;
+}
+.poke-img-overlay {
+  width: 70px;
+  height: 70px;
+}
+
+#overlay-element-container {
+  display: flex;
+  justify-content: center;
+}
+
+/* CARD BG -TYPES */
+
+.bg-fire {
+  background-color: rgb(230, 64, 64);
+}
+
+/* CARD BG */
+
+#card-bg {
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.poke-img {
+  width: 100px;
+  height: 105px;
+  object-fit: contain;
+  transition: all 175ms ease-in-out;
+  &:hover {
+    transform: scale(1.15);
+  }
+}
+
+.poke-element-icon {
+  width: 35px;
+  height: 35px;
+}
+
+/* OVERLAY */
+
+#overlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+  cursor: pointer;
+}
+
+#card-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: white;
+  transform: translate(-50%, -50%);
+  background: antiquewhite;
+  width: 40%;
+  height: 65%;
+  border-radius: 25px;
+}
+
+#card-overlay-bg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.poke-overlay-img {
+  width: 40%;
+  height: 31%;
+}
+
+#stats {
+  display: flex;
+  justify-content: space-around;
+  color: black;
+  background-color: azure;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 8px;
+  cursor: pointer;
+}
+
+#overlay-main {
+  color: black;
+  padding-left: 24px;
+  padding-top: 24px;
+}
+
+.overlay-main-stats {
+  padding-left: 24px;
+}
+
+#overlay-img-container {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 35px;
+}
+/* IMPRESSUM */
+
+#impressum-text {
+  height: 100vh;
 }
 
 /* FOOTER */
@@ -49,4 +215,11 @@ footer {
   display: flex;
   justify-content: space-around;
   align-items: center;
+}
+
+#card-footer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 7px;
 }
