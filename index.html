@@ -4,41 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>POKEDEX - API</title>
-    <link rel="shortcut icon" href="#" type="image/x-icon" />
+    <link
+      rel="shortcut icon"
+      href="./img/pokemon-catch_favicon.png"
+      type="image/x-icon"
+    />
     <link rel="stylesheet" href="style/style.css" />
   </head>
-  <body onload="">
+  <body onload="init()">
     <header id="top">
       <h1>POKEDEX</h1>
     </header>
 
     <main id="content">
-      <div id="card" onclick="overlayOn()">
-        <section class="title">
-          <p>
-            #
-            <span id="title-num">7</span>
-          </p>
-          <span id="title">Charmander</span>
-        </section>
-        <section id="card-bg" class="bg-fire">
-          <img class="poke-img" src="./img/pokemon_charmander.png" alt="" />
-        </section>
-        <section>
-          <div id="card-footer">
-            <img
-              class="poke-element-icon"
-              src="./img/elements/pokemon-fire-icon.png"
-              alt=""
-            />
-            <img
-              class="poke-element-icon"
-              src="./img/elements/pokemon-flying-icon.png"
-              alt=""
-            />
-          </div>
-        </section>
-      </div>
+      <div id="card-content"></div>
 
       <div id="overlay" onclick="overlayOff()">
         <div id="card-overlay" onclick="close(event)">
@@ -74,67 +53,17 @@
             </div>
 
             <section>
-              <div id="main-overlay">
-                <div id="overlay-main">
-                  <p>
-                    Height:
-                    <span class="overlay-main-stats" id="overlay-height"
-                      >0.6</span
-                    >m
-                  </p>
-                  <p>
-                    Weight:
-                    <span class="overlay-main-stats" id="overlay-weight"
-                      >8.5</span
-                    >kg
-                  </p>
-                  <p>
-                    Base Exp:
-                    <span class="overlay-main-stats" id="overlay-base-exp"
-                      >62</span
-                    >
-                  </p>
-                  <p>
-                    Abilities:
-                    <span id="overlay-abilities">blaze, solar-power</span>
-                  </p>
-                </div>
-              </div>
+              <div id="main-overlay"></div>
 
-              <!-- <div id="stats-overlay">
-                <div id="overlay-stats">
-                  <p>hp <span class="overlay-stats-bar" id="overlay-hp"  style="margin-left: 75px;">39</span></p>
-                  <p>attack <span class="overlay-stats-bar" id="overlay-attack" style="margin-left: 45px;">52</span></p>
-                  <p>defense <span class="overlay-stats-bar" id="overlay-defense" style="margin-left: 31px;">43</span></p>
-                  <p>speed <span class="overlay-stats-bar" id="overlay-speed" style="margin-left: 47px;">65</span></p>
-                  <p>special atk <span class="overlay-stats-bar" id="overlay-special-atk" style="margin-left: 9px;">60</span></p>
-                  <p>special def<span class="overlay-stats-bar" id="overlay-special-def" style="margin-left: 14px;">50</span></p>
-                  </p>
-                </div>
-              </div> -->
+              <div id="stats-overlay"></div>
 
-              <!-- <div id="overlay-evo">
-                <div id="overlay-img-container">
-                  <img
-                    class="poke-img"
-                    src="./img/pokemon_charmander.png"
-                    alt=""
-                  />
-                  <img
-                    class="poke-img"
-                    src="./img/pokemon-charmander-charmeleon.png"
-                    alt=""
-                  />
-                  <img
-                    class="poke-img"
-                    src="./img/pokemon-charmander-charizard.png"
-                    alt=""
-                  />
-                </div>
-              </div> -->
+              <div id="overlay-evo"></div>
             </section>
           </div>
         </div>
+      </div>
+      <div id="btn-container">
+        <button id="btn-load-more" onclick="loadMore()">load more</button>
       </div>
     </main>
 
@@ -152,6 +81,7 @@
       data-blockingmode="auto"
       type="text/javascript"
     ></script> -->
+    <script src="script/template.js"></script>
     <script src="script/script.js"></script>
   </body>
 </html>

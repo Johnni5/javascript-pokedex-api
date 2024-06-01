@@ -11,6 +11,7 @@ body {
   margin: 0;
   font-size: 16px;
   background-color: aqua;
+  height: 100vh;
 }
 
 html {
@@ -29,6 +30,10 @@ p {
 }
 
 .d-none {
+  display: none;
+}
+
+.poke-element-icon.hidden {
   display: none;
 }
 
@@ -63,6 +68,7 @@ header {
 
 #content {
   height: 100vh;
+  min-height: 100vh;
 }
 
 .title {
@@ -81,18 +87,27 @@ header {
 
 #card {
   background-color: rgb(211, 144, 97);
-  margin-left: auto;
-  margin-right: auto;
+  /* margin-left: auto; */
+  /* margin-right: auto; */
   width: 200px;
   height: 250px;
   border: black 1px solid;
   border-radius: 10px;
   box-shadow: blueviolet 0 0 6px;
   margin-top: 75px;
-  overflow-y: auto;
-  margin-bottom: 75px;
+  /* overflow-y: auto; */
+  /* margin-bottom: 75px; */
   cursor: pointer;
 }
+
+#card-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  padding-bottom: 120px;
+}
+
 .poke-img-overlay {
   width: 70px;
   height: 70px;
@@ -107,6 +122,74 @@ header {
 
 .bg-fire {
   background-color: rgb(230, 64, 64);
+}
+
+.bg-water {
+  background-color: blue;
+}
+
+.bg-grass {
+  background-color: green;
+}
+
+.bg-ground {
+  background-color: brown;
+}
+
+.bg-rock {
+  background-color: gray;
+}
+
+.bg-steel {
+  background-color: rgb(66, 61, 61);
+}
+
+.bg-ice {
+  background-color: rgb(152, 152, 223);
+}
+
+.bg-electric {
+  background-color: rgba(241, 238, 61, 0.829);
+}
+
+.bg-dragon {
+  background-color: lightgreen;
+}
+
+.bg-ghost {
+  background-color: rgb(209, 202, 202);
+}
+
+.bg-psychic {
+  background-color: lightpink;
+}
+
+.bg-normal {
+  background-color: lightgrey;
+}
+
+.bg-fighting {
+  background-color: rgb(226, 80, 80);
+}
+
+.bg-poison {
+  background-color: rgb(194, 113, 194);
+}
+
+.bg-bug {
+  background-color: rgb(138, 233, 138);
+}
+
+.bg-flying {
+  background-color: rgb(149, 149, 228);
+}
+
+.bg-dark {
+  background-color: rgb(61, 58, 58);
+}
+
+.bg-fairy {
+  background-color: lightpink;
 }
 
 /* CARD BG */
@@ -200,21 +283,50 @@ header {
   justify-content: space-evenly;
   margin-top: 35px;
 }
+
+#btn-container {
+  display: flex;
+  justify-content: center;
+}
+
+#btn-load-more {
+  width: 220px;
+  height: 80px;
+  padding: 8px;
+  color: black;
+  font-weight: 600;
+  background-color: rgb(218, 160, 53);
+  margin-bottom: 100px;
+  border-radius: 14px;
+  font-size: x-large;
+  cursor: pointer;
+  &:hover {
+    scale: 1.1;
+    background-color: rgb(235, 201, 161);
+  }
+}
+
 /* IMPRESSUM */
 
 #impressum-text {
+  padding-top: 75px;
   height: 100vh;
+  text-align: center;
 }
 
 /* FOOTER */
 
 footer {
   border: rgb(236, 34, 112) 2px solid;
-
   height: 80px;
   display: flex;
   justify-content: space-around;
   align-items: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: aliceblue;
 }
 
 #card-footer {
