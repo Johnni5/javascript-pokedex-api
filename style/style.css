@@ -58,10 +58,24 @@ p {
   background: rgba(154, 205, 50, 0.3);
 }
 
+.distance-txt {
+  margin-bottom: 8px;
+}
+
 /* HEADER */
 
 header {
   border: yellowgreen 2px solid;
+  display: flex;
+  align-items: center;
+}
+
+#title-logo {
+  margin-left: 56px;
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-right: 16px;
 }
 
 /* CARD */
@@ -116,6 +130,18 @@ header {
 #overlay-element-container {
   display: flex;
   justify-content: center;
+}
+
+#overlay-height {
+  padding-left: 45px;
+}
+
+#overlay-weight {
+  padding-left: 41px;
+}
+
+#overlay-abilities {
+  padding-left: 32px;
 }
 
 /* CARD BG -TYPES */
@@ -239,7 +265,7 @@ header {
   color: white;
   transform: translate(-50%, -50%);
   background: antiquewhite;
-  width: 40%;
+  width: 35%;
   height: 65%;
   border-radius: 25px;
 }
@@ -270,8 +296,12 @@ header {
 
 #overlay-main {
   color: black;
-  padding-left: 24px;
-  padding-top: 24px;
+  padding-left: 53px;
+  padding-top: 34px;
+}
+
+overlay-main > p {
+  margin-bottom: 16px;
 }
 
 .overlay-main-stats {

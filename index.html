@@ -6,13 +6,16 @@
     <title>POKEDEX - API</title>
     <link
       rel="shortcut icon"
-      href="./img/pokemon-catch_favicon.png"
+      href="./img/favicon-pokeball.jpg"
       type="image/x-icon"
     />
     <link rel="stylesheet" href="style/style.css" />
   </head>
   <body onload="init()">
     <header id="top">
+      <a href="index.html">
+        <img id="title-logo" src="./img/pokemon-catch_favicon.png" alt="" />
+      </a>
       <h1>POKEDEX</h1>
     </header>
 
@@ -21,45 +24,45 @@
 
       <div id="overlay" onclick="overlayOff()">
         <div id="card-overlay" onclick="close(event)">
-          <div>
-            <section class="title txt-black">
-              <p>
-                #
-                <span id="title-num">7</span>
-              </p>
-              <span id="title title-overlay">Charmander</span>
-            </section>
+          <section class="title txt-black">
+            <p>
+              #
+              <span id="title-num-big"></span>
+            </p>
+            <span class="title-big" id=" title title-overlay "></span>
+          </section>
 
-            <section id="card-overlay-bg" class="bg-fire">
-              <img
-                class="poke-overlay-img"
-                src="./img/pokemon_charmander.png"
-                alt=""
-              />
-            </section>
+          <section id="card-overlay-bg" class="">
+            <img
+              id="overlay-img-big"
+              class="poke-overlay-img"
+              src="./img/pokemon_charmander.png"
+              alt=""
+            />
+          </section>
 
-            <div id="overlay-element-container">
-              <img
-                class="poke-img-overlay"
-                src="./img/elements/pokemon-fire-icon.png"
-                alt=""
-              />
-            </div>
-
-            <div id="stats">
-              <span class="active" onclick="openMain()">Main</span>
-              <span class="" onclick="openStats()">Stats</span>
-              <span class="" onclick="openEvoChain()">Evo-Chain</span>
-            </div>
-
-            <section>
-              <div id="main-overlay"></div>
-
-              <div id="stats-overlay"></div>
-
-              <div id="overlay-evo"></div>
-            </section>
+          <div id="overlay-element-container">
+            <img
+              id="overlay-element-icon"
+              class="poke-img-overlay"
+              src="./img/elements/pokemon-fire-icon.png"
+              alt=""
+            />
           </div>
+
+          <div id="stats">
+            <span class="active" onclick="renderMain(event)">Main</span>
+            <span class="" onclick="renderStats(event)">Stats</span>
+            <span class="" onclick="renderEvoChain(event)">Evo-Chain</span>
+          </div>
+
+          <section>
+            <div id="main-overlay"></div>
+
+            <div id="stats-overlay"></div>
+
+            <div id="overlay-evo"></div>
+          </section>
         </div>
       </div>
       <div id="btn-container">
@@ -81,7 +84,7 @@
       data-blockingmode="auto"
       type="text/javascript"
     ></script> -->
-    <script src="script/template.js"></script>
     <script src="script/script.js"></script>
+    <script src="script/template.js"></script>
   </body>
 </html>
