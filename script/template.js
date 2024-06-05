@@ -1,16 +1,16 @@
 function renderMain(data, i) {
-  event.stopPropagation();
+  const height = data.height / 10 || pokeData[i].height / 10;
+  const weight = data.weight / 10 || pokeData[i].weight / 10;
+  const baseExp = data.base_experience || pokeData[i].base_experience;
 
-  console.log('pokeData inside renderMain -START -> ', data);
-  console.log('Index i:', i);
-
-  const height = data.height / 10;
-  const weight = data.weight / 10;
-  const baseExp = data.base_experience;
-  const abilities1 = data.abilities[0]['ability']['name'];
+  const abilities1 =
+    data.abilities && data.abilities[0]
+      ? data.abilities[0]['ability']['name']
+      : '' || pokeData[i].abilities[0]['ability']['name'];
   const abilities2 =
-    data.abilities.length > 1 ? data.abilities[1]['ability']['name'] : '';
-
+    data.abilities && data.abilities.length > 1
+      ? data.abilities[1]['ability']['name']
+      : '';
   return `
       <div id="overlay-main">
         <p class="distance-txt">
@@ -32,49 +32,68 @@ function renderMain(data, i) {
         </p>
       </div>
     `;
-  // } else {
-  //   return '<div id="overlay-main">No data available</div>';
-  // }
 }
 
-function renderStatsData(data, i, event) {
-  event.stopPropagation();
-  console.log('arg from renderStatsData()', data);
-  const hp = data.stats[0][base_stat];
-  return `<div id="overlay-stats">
-    <p>hp <span class="overlay-stats-bar" id="overlay-hp"  style="margin-left: 75px;">${hp}</span></p>
-    <p>attack <span class="overlay-stats-bar" id="overlay-attack" style="margin-left: 45px;">52</span></p>
-    <p>defense <span class="overlay-stats-bar" id="overlay-defense" style="margin-left: 31px;">43</span></p>
-    <p>speed <span class="overlay-stats-bar" id="overlay-speed" style="margin-left: 47px;">65</span></p>
-    <p>special atk <span class="overlay-stats-bar" id="overlay-special-atk" style="margin-left: 9px;">60</span></p>
-    <p>special def<span class="overlay-stats-bar" id="overlay-special-def" style="margin-left: 14px;">50</span></p>
-    </p>
-  </div>`;
+function renderStatsData(data, i) {
+  if (data[i]) {
+    const hp = data[i].stats[0].base_stat;
+    const attack = data[i].stats[1].base_stat;
+    const defense = data[i].stats[2].base_stat;
+    const speed = data[i].stats[5].base_stat;
+    const specialAtk = data[i].stats[3].base_stat;
+    const specialDef = data[i].stats[4].base_stat;
+
+    return `<div id="overlay-stats">
+      <p>hp <span class="overlay-stats-bar" id="overlay-hp"  style="margin-left: 75px;">${hp}</span></p>
+      <p>attack <span class="overlay-stats-bar" id="overlay-attack" style="margin-left: 45px;">${attack}</span></p> 
+      <p>defense <span class="overlay-stats-bar" id="overlay-defense" style="margin-left: 31px;">${defense}</span></p>
+      <p>speed <span class="overlay-stats-bar" id="overlay-speed" style="margin-left: 47px;">${speed}</span></p>
+      <p>special atk <span class="overlay-stats-bar" id="overlay-special-atk" style="margin-left: 9px;">${specialAtk}</span></p>
+      <p>special def<span class="overlay-stats-bar" id="overlay-special-def" style="margin-left: 14px;">${specialDef}</span></p>
+      </p>
+    </div>`;
+  } else {
+    return '<div id="overlay-stats">No data available</div>';
+  }
 }
 
-function renderEvoChain(event) {
-  event.stopPropagation();
+function renderEvoChain(data, currentPokemonIndex) {
+  const currentPokemon = data[currentPokemonIndex];
+
+  document.getElementById('stats-tab').classList.remove('active');
+  document.getElementById('evo-tab').classList.add('active');
+
+  const evo1 =
+    currentPokemon['sprites']['versions'][`generation-i`]['red-blue'][
+      'front_transparent'
+    ];
+  const evo2 =
+    currentPokemon['sprites']['versions'][`generation-ii`]['crystal'][
+      'front_transparent'
+    ];
+  const evo3 =
+    currentPokemon['sprites']['versions'][`generation-iii`][
+      'firered-leafgreen'
+    ]['front_default'];
 
   return ` <div id="overlay-img-container">
   <img
     class="poke-img"
-    src="./img/pokemon_charmander.png"
+    src="${evo1}"
     alt=""
   />
   <img
     class="poke-img"
-    src="./img/pokemon-charmander-charmeleon.png"
+    src="${evo2}"
     alt=""
   />
   <img
     class="poke-img"
-    src="./img/pokemon-charmander-charizard.png"
+    src="${evo3}"
     alt=""
   />
 </div>`;
 }
-
-// WORKING - but 2 small
 
 function renderCardFront(data, i) {
   const hasSecondType = pokeData[i]['types'].length > 1;
@@ -109,4 +128,46 @@ function renderCardFront(data, i) {
         </div>
       </section>
     </div>`;
+}
+
+function loadResult(pokemon, i, secondTypeIcon) {
+  return `
+  <div id="card" onclick="overlayOn(pokeData[${i}], ${i})">
+    <section class="title">
+      <p>#<span id="title-num">${pokemon.id}</span></p>
+      <span id="title">${pokemon.name}</span>
+    </section>
+    <section id="card-bg" class="bg-${pokemon.types[0].type.name}">
+      <img class="poke-img" src="${pokemon.sprites.other['official-artwork'].front_default}" alt="" />
+    </section>
+    <section>
+      <div id="card-footer">
+        <img class="poke-element-icon" src="./img/elements/pokemon-${pokemon.types[0].type.name}-icon.png" title="${pokemon.types[0].type.name}" alt="" />
+        ${secondTypeIcon}
+      </div>
+    </section>
+  </div>
+`;
+}
+
+function renderOverlay(data) {
+  const statContent = document.getElementById('stats-overlay');
+  statContent.innerHTML = '';
+  const evoContent = document.getElementById('evo-overlay');
+  evoContent.innerHTML = '';
+
+  const idOverlay = document.getElementById('title-num-big');
+  idOverlay.innerHTML = `${data['id']}`;
+
+  const nameOverlay = document.querySelector('.title-big');
+  nameOverlay.innerHTML = `${data['name']}`;
+
+  const imgOverlay = document.getElementById('overlay-img-big');
+  imgOverlay.src = `${data['sprites']['other']['official-artwork']['front_default']}`;
+
+  const cardBg = document.getElementById('card-overlay-bg');
+  cardBg.className = `bg-${data['types'][0]['type']['name']}`;
+
+  const icon = document.getElementById('overlay-element-icon');
+  icon.src = `./img/elements/pokemon-${data['types'][0]['type']['name']}-icon.png`;
 }

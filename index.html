@@ -17,6 +17,14 @@
         <img id="title-logo" src="./img/pokemon-catch_favicon.png" alt="" />
       </a>
       <h1>POKEDEX</h1>
+      <div id="search">
+        <input
+          id="search-input"
+          onkeydown="searchPokemon()"
+          type="text"
+          placeholder="your search here ..."
+        />
+      </div>
     </header>
 
     <main id="content">
@@ -51,9 +59,24 @@
           </div>
 
           <div id="stats">
-            <span class="active" onclick="renderMain(event)">Main</span>
-            <span class="" onclick="renderStats(event)">Stats</span>
-            <span class="" onclick="renderEvoChain(event)">Evo-Chain</span>
+            <span
+              id="main-tab"
+              class="active"
+              onclick="renderMainTab(event, getCurrentPokemonIndex())"
+              >Main
+            </span>
+            <span
+              id="stats-tab"
+              class=""
+              onclick="renderStats(event, getCurrentPokemonIndex())"
+              >Stats
+            </span>
+            <span
+              id="evo-tab"
+              class=""
+              onclick="renderEvo(event, getCurrentPokemonIndex())"
+              >Evo-Chain
+            </span>
           </div>
 
           <section>
@@ -61,8 +84,16 @@
 
             <div id="stats-overlay"></div>
 
-            <div id="overlay-evo"></div>
+            <div id="evo-overlay"></div>
           </section>
+        </div>
+        <div id="arrow-container" class="d-none show-container">
+          <button id="prev-btn" onclick="prevPokemon()" class="prev arrow-btn">
+            &#10094;
+          </button>
+          <button id="next-btn" onclick="nextPokemon()" class="next arrow-btn">
+            &#10095;
+          </button>
         </div>
       </div>
       <div id="btn-container">
