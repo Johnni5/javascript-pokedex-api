@@ -34,6 +34,32 @@ function renderMain(data, i) {
     `;
 }
 
+// ORIG
+// function renderStatsData(data, i) {
+//   if (data[i]) {
+//     const hp = data[i].stats[0].base_stat;
+//     const attack = data[i].stats[1].base_stat;
+//     const defense = data[i].stats[2].base_stat;
+//     const speed = data[i].stats[5].base_stat;
+//     const specialAtk = data[i].stats[3].base_stat;
+//     const specialDef = data[i].stats[4].base_stat;
+
+//     return `
+//     <div id="overlay-stats">
+//       <p>hp <span class="overlay-stats-bar" id="overlay-hp"  style="margin-left: 75px;">${hp}</span></p>
+//       <p>attack <span class="overlay-stats-bar" id="overlay-attack" style="margin-left: 45px;">${attack}</span></p>
+//       <p>defense <span class="overlay-stats-bar" id="overlay-defense" style="margin-left: 31px;">${defense}</span></p>
+//       <p>speed <span class="overlay-stats-bar" id="overlay-speed" style="margin-left: 47px;">${speed}</span></p>
+//       <p>special atk <span class="overlay-stats-bar" id="overlay-special-atk" style="margin-left: 9px;">${specialAtk}</span></p>
+//       <p>special def<span class="overlay-stats-bar" id="overlay-special-def" style="margin-left: 14px;">${specialDef}</span></p>
+//       </p>
+//     </div>`;
+//   } else {
+//     return '<div id="overlay-stats">No data available</div>';
+//   }
+// }
+
+// incl svg-start
 function renderStatsData(data, i) {
   if (data[i]) {
     const hp = data[i].stats[0].base_stat;
@@ -42,14 +68,14 @@ function renderStatsData(data, i) {
     const speed = data[i].stats[5].base_stat;
     const specialAtk = data[i].stats[3].base_stat;
     const specialDef = data[i].stats[4].base_stat;
-
+    //  <div id="overlay-stats">
     return `
      
         <div class="row">
           <p>hp <span class="overlay-dist-bar overlay-stats-bar1" id="overlay-hp">${createSvgBar(
             hp
           )}</span></p>
-        </div>
+        </div
         <div class="row">
           <p>attack <span class="overlay-dist-bar overlay-stats-bar1" id="overlay-attack">${createSvgBar(
             attack
@@ -88,35 +114,36 @@ function renderEvoChain(data, currentPokemonIndex) {
   document.getElementById('stats-tab').classList.remove('active');
   document.getElementById('evo-tab').classList.add('active');
 
-  const genEvo1 = currentPokemon['sprites']['versions']['generation-i'];
-  const genEvo1a = currentPokemon['sprites']['versions']['generation-iv'];
   const evo1 =
-    genEvo1['red-blue']['front_transparent'] ||
-    genEvo1['yellow']['front_transparent'] ||
-    genEvo1a['diamond-pearl']['front_default'] ||
-    '';
-
+    currentPokemon['sprites']['versions'][`generation-i`]['red-blue'][
+      'front_transparent'
+    ];
   const evo2 =
     currentPokemon['sprites']['versions'][`generation-ii`]['crystal'][
       'front_transparent'
     ];
-
-  const genEvo3 = currentPokemon['sprites']['versions'][`generation-iii`];
   const evo3 =
-    genEvo3['emerald']['front_default'] ||
-    genEvo3['firered-leafgreen']['front_default'] ||
-    genEvo3['ruby-sapphire']['front_default'];
+    currentPokemon['sprites']['versions'][`generation-iii`][
+      'firered-leafgreen'
+    ]['front_default'];
 
-  const img1 = `<img class="poke-img" src="${evo1}" alt="" />`;
-  const img2 = `<img class="poke-img" src="${evo2}" alt="" />`;
-  const img3 = `<img class="poke-img" src="${evo3}" alt="" />`;
-
-  return ` 
-    <div id="overlay-img-container">
-      ${evo1 ? img1 : ''}
-      ${evo2 ? img2 : ''}
-      ${evo3 ? img3 : ''}
-    </div>`;
+  return ` <div id="overlay-img-container">
+  <img
+    class="poke-img"
+    src="${evo1}"
+    alt=""
+  />
+  <img
+    class="poke-img"
+    src="${evo2}"
+    alt=""
+  />
+  <img
+    class="poke-img"
+    src="${evo3}"
+    alt=""
+  />
+</div>`;
 }
 
 function renderCardFront(data, i) {
@@ -129,7 +156,7 @@ function renderCardFront(data, i) {
     : '';
 
   return `
-    <div class="card" onclick="overlayOn(pokeData[${i}], ${i})">
+    <div id="card" onclick="overlayOn(pokeData[${i}], ${i})">
       <section class="title">
         <p>
           #
@@ -141,7 +168,7 @@ function renderCardFront(data, i) {
         <img class="poke-img" src="${data[i]['sprites']['other']['official-artwork']['front_default']}" alt="" />
       </section>
       <section>
-        <div class="card-footer">
+        <div id="card-footer">
           <img
             class="poke-element-icon"
             src="./img/elements/pokemon-${data[i]['types'][0]['type']['name']}-icon.png"
@@ -154,10 +181,9 @@ function renderCardFront(data, i) {
     </div>`;
 }
 
-function loadResult(displayedPokemon, i, secondTypeIcon) {
-  const pokemon = displayedPokemon[i];
+function loadResult(pokemon, i, secondTypeIcon) {
   return `
-  <div class="card" onclick="overlayOn(pokeData[${i}], ${i})">
+  <div id="card" onclick="overlayOn(pokeData[${i}], ${i})">
     <section class="title">
       <p>#<span id="title-num">${pokemon.id}</span></p>
       <span id="title">${pokemon.name}</span>
@@ -166,7 +192,7 @@ function loadResult(displayedPokemon, i, secondTypeIcon) {
       <img class="poke-img" src="${pokemon.sprites.other['official-artwork'].front_default}" alt="" />
     </section>
     <section>
-      <div class="card-footer">
+      <div id="card-footer">
         <img class="poke-element-icon" src="./img/elements/pokemon-${pokemon.types[0].type.name}-icon.png" title="${pokemon.types[0].type.name}" alt="" />
         ${secondTypeIcon}
       </div>

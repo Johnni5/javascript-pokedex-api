@@ -1,0 +1,75 @@
+/* CARD BG -TYPES */
+
+.bg-fire {
+  background-color: rgb(230, 64, 64);
+}
+
+.bg-water {
+  background-color: blue;
+}
+
+.bg-grass {
+  background-color: green;
+}
+
+.bg-ground {
+  background-color: brown;
+}
+
+.bg-rock {
+  background-color: gray;
+}
+
+.bg-steel {
+  background-color: rgb(66, 61, 61);
+}
+
+.bg-ice {
+  background-color: rgb(152, 152, 223);
+}
+
+.bg-electric {
+  background-color: rgba(241, 238, 61, 0.829);
+}
+
+.bg-dragon {
+  background-color: lightgreen;
+}
+
+.bg-ghost {
+  background-color: rgb(209, 202, 202);
+}
+
+.bg-psychic {
+  background-color: lightpink;
+}
+
+.bg-normal {
+  background-color: lightgrey;
+}
+
+.bg-fighting {
+  background-color: rgb(226, 80, 80);
+}
+
+.bg-poison {
+  background-color: rgb(194, 113, 194);
+}
+
+.bg-bug {
+  background-color: rgb(138, 233, 138);
+}
+
+.bg-flying {
+  background-color: rgb(149, 149, 228);
+}
+
+.bg-dark {
+  background-color: rgb(61, 58, 58);
+}
+
+.bg-fairy {
+  background-color: lightpink;
+}
+
+/* CARD BG */

@@ -48,7 +48,7 @@ p {
 
 #overlay-stats {
   color: black;
-  padding-left: 75px;
+  padding-left: 35px;
   padding-top: 26px;
 }
 
@@ -81,7 +81,6 @@ overlay-stats > p {
 /* HEADER */
 
 header {
-  border: yellowgreen 2px solid;
   display: flex;
   align-items: center;
 }
@@ -115,7 +114,7 @@ header {
   font-size: x-large;
 }
 
-#card {
+.card {
   background-color: rgb(211, 144, 97);
   width: 200px;
   height: 250px;
@@ -156,81 +155,49 @@ header {
   padding-left: 32px;
 }
 
-/* CARD BG -TYPES */
-
-.bg-fire {
-  background-color: rgb(230, 64, 64);
+.overlay-dist-bar {
+  margin-right: 16px;
 }
 
-.bg-water {
-  background-color: blue;
+#stats-overlay {
+  display: flex;
+  flex-direction: column;
 }
 
-.bg-grass {
-  background-color: green;
+.stat-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.stat-row span {
+  width: 150px;
+  text-align: left;
 }
 
-.bg-ground {
-  background-color: brown;
+.stat-name {
+  width: 150px;
+  text-align: start;
+  font-size: 18px;
+  font-weight: bold;
 }
 
-.bg-rock {
-  background-color: gray;
+.stats-row svg {
+  border-radius: 50px;
+  flex: 1;
+  height: 30px;
+  position: relative;
 }
 
-.bg-steel {
-  background-color: rgb(66, 61, 61);
+.tab-content svg {
+  width: 100%;
+  height: auto;
+  margin: 10px 0;
 }
 
-.bg-ice {
-  background-color: rgb(152, 152, 223);
+.stat-bar {
+  transition: width 1s ease;
+  fill: currentColor;
 }
-
-.bg-electric {
-  background-color: rgba(241, 238, 61, 0.829);
-}
-
-.bg-dragon {
-  background-color: lightgreen;
-}
-
-.bg-ghost {
-  background-color: rgb(209, 202, 202);
-}
-
-.bg-psychic {
-  background-color: lightpink;
-}
-
-.bg-normal {
-  background-color: lightgrey;
-}
-
-.bg-fighting {
-  background-color: rgb(226, 80, 80);
-}
-
-.bg-poison {
-  background-color: rgb(194, 113, 194);
-}
-
-.bg-bug {
-  background-color: rgb(138, 233, 138);
-}
-
-.bg-flying {
-  background-color: rgb(149, 149, 228);
-}
-
-.bg-dark {
-  background-color: rgb(61, 58, 58);
-}
-
-.bg-fairy {
-  background-color: lightpink;
-}
-
-/* CARD BG */
 
 #card-bg {
   height: 150px;
@@ -302,7 +269,7 @@ header {
   position: absolute;
   top: 50%;
   left: 50%;
-  color: white;
+  color: rgb(27, 27, 27);
   transform: translate(-50%, -50%);
   background: antiquewhite;
   width: 35%;
@@ -387,7 +354,6 @@ overlay-main > p {
 /* FOOTER */
 
 footer {
-  border: rgb(236, 34, 112) 2px solid;
   height: 80px;
   display: flex;
   justify-content: space-around;
@@ -399,9 +365,55 @@ footer {
   background-color: aliceblue;
 }
 
-#card-footer {
+.card-footer {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   margin-top: 7px;
+}
+
+/* STATS BAR - */
+
+.overlay-stats-bar {
+  display: inline-block;
+  width: 200px;
+  height: 20px;
+  background-color: lightgray;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.overlay-stats-bar svg {
+  width: 100%;
+  height: 100%;
+}
+
+.bar-container {
+  width: 75%;
+  height: 20px;
+  background-color: #ccc;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.bar-value {
+  height: 100%;
+  background-color: green;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bar-text {
+  color: #efe8e8;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.row {
+  display: flex;
+  margin-bottom: 2%;
+  width: 70%;
+  padding-left: 14%;
+  padding-top: 2%;
 }

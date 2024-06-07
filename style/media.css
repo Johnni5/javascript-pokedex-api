@@ -1,0 +1,94 @@
+@media screen and (max-width: 1000px) {
+  #card-overlay {
+    width: 60%;
+  }
+}
+
+@media mobile and (min-width: 900px) {
+  #card-overlay {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  #card-overlay {
+    width: 70%;
+    height: 80%;
+  }
+
+  .next {
+    right: 1%;
+  }
+
+  .prev {
+    left: 1%;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .next {
+    right: 3%;
+  }
+
+  .prev {
+    left: 3%;
+  }
+
+  #card-overlay {
+    height: 80%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .poke-img {
+    height: 88px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  header {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #title-logo {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  #card-overlay {
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .prev {
+    top: 50%;
+  }
+
+  .next {
+    top: 50%;
+  }
+}
+
+@media screen and (max-width: 356px) {
+  #overlay-img-container {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 0;
+  }
+
+  #card-overlay {
+    width: 90%;
+    height: 65%;
+  }
+
+  .prev {
+    top: 90%;
+  }
+
+  .next {
+    top: 90%;
+  }
+}
